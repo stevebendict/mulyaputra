@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio Landing — [Your Name]</title>
+<title>Portfolio Landing — Steve Benedict Mulyaputra</title>
 <style>
   /* Reset */
   * {
@@ -34,6 +34,28 @@
   }
   ul {
     padding-left: 1.5rem;
+  }
+  /* Bio section styles */
+  #bio {
+    text-align: center;
+    color: #1abc9c;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #bio h1 {
+    font-size: 3rem;
+    margin-bottom: 0.2rem;
+  }
+  #bio p {
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  #bio .langs {
+    font-size: 1.2rem;
+    display: inline-flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   /* iPhone dock style nav */
@@ -104,6 +126,17 @@
 </head>
 <body>
 
+<section id="bio" tabindex="0">
+  <h1>Steve Benedict Mulyaputra</h1>
+  <p>Multilingual Professional</p>
+  <div class="langs">
+    <span>🇺🇸 English</span>
+    <span>🇮🇩 Indonesian</span>
+    <span>🇨🇳 Mandarin (HSK 3)</span>
+    <span>🇩🇪 German (A2)</span>
+  </div>
+</section>
+
 <section id="design" tabindex="0">
   <h1>Design</h1>
   <p>Branding, graphic design, photography, drone footage, and video editing that tell compelling visual stories.</p>
@@ -149,7 +182,10 @@
 </section>
 
 <nav role="navigation" aria-label="Portfolio section navigation">
-  <button data-target="design" class="active" aria-current="page" aria-label="Go to Design section">
+  <button data-target="bio" class="active" aria-current="page" aria-label="Go to Bio section">
+    <span class="icon">👤</span><span>Bio</span>
+  </button>
+  <button data-target="design" aria-label="Go to Design section">
     <span class="icon">🎨</span><span>Design</span>
   </button>
   <button data-target="social" aria-label="Go to Social Media section">
