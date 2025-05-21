@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio Landing — [Your Name]</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background: #121212;
+    color: #eee;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px; /* space for dock */
+  }
+  section {
+    min-height: 100vh;
+    padding: 4rem 2rem 2rem;
+    scroll-margin-bottom: 100px; /* offset for dock */
+  }
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  p, ul {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  ul {
+    padding-left: 1.5rem;
+  }
+
+  /* iPhone dock style nav */
+  nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30,30,30,0.85);
+    border-radius: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    padding: 10px 30px;
+    display: flex;
+    gap: 40px;
+    z-index: 1000;
+    max-width: 420px;
+    width: 90vw;
+    justify-content: center;
+  }
+  nav button {
+    background: none;
+    border: none;
+    color: #bbb;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.7rem;
+    user-select: none;
+    transition: color 0.3s ease;
+    width: 50px;
+  }
+  nav button span {
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+  nav button:hover,
+  nav button:focus-visible,
+  nav button.active {
+    color: #1abc9c;
+    outline: none;
+  }
+
+  /* Emojis as placeholders for icons */
+  nav button svg,
+  nav button .icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  /* Responsive font size */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+    nav button {
+      width: 44px;
+      font-size: 0.6rem;
+    }
+    nav {
+      max-width: 360px;
+      padding: 10px 20px;
+      gap: 30px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section id="design" tabindex="0">
+  <h1>Design</h1>
+  <p>Branding, graphic design, photography, drone footage, and video editing that tell compelling visual stories.</p>
+  <ul>
+    <li>Logo & identity design</li>
+    <li>Event & product photography</li>
+    <li>Video editing & motion graphics</li>
+    <li>Print & digital media</li>
+  </ul>
+</section>
+
+<section id="social" tabindex="0">
+  <h1>Social Media</h1>
+  <p>Social media strategy, content creation, management, and growth analytics.</p>
+  <ul>
+    <li>Platform content strategy</li>
+    <li>Engagement & community building</li>
+    <li>Analytics and reporting</li>
+    <li>Campaign management</li>
+  </ul>
+</section>
+
+<section id="event" tabindex="0">
+  <h1>Event</h1>
+  <p>Event planning, offline promotions, on-site management, and campaign coordination.</p>
+  <ul>
+    <li>Event logistics & operations</li>
+    <li>Promotional campaigns</li>
+    <li>Vendor & client coordination</li>
+    <li>Post-event reporting</li>
+  </ul>
+</section>
+
+<section id="website" tabindex="0">
+  <h1>Website</h1>
+  <p>Web development, UI/UX design, maintenance, and deployment.</p>
+  <ul>
+    <li>Front-end and back-end development</li>
+    <li>Responsive design & accessibility</li>
+    <li>CMS integration & SEO</li>
+    <li>Site performance optimization</li>
+  </ul>
+</section>
+
+<nav role="navigation" aria-label="Portfolio section navigation">
+  <button data-target="design" class="active" aria-current="page" aria-label="Go to Design section">
+    <span class="icon">🎨</span><span>Design</span>
+  </button>
+  <button data-target="social" aria-label="Go to Social Media section">
+    <span class="icon">📱</span><span>Social</span>
+  </button>
+  <button data-target="event" aria-label="Go to Event section">
+    <span class="icon">🎉</span><span>Event</span>
+  </button>
+  <button data-target="website" aria-label="Go to Website section">
+    <span class="icon">🌐</span><span>Website</span>
+  </button>
+</nav>
+
+<script>
+  const buttons = document.querySelectorAll('nav button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+      document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+      
+      // Update active button styling
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.removeAttribute('aria-current');
+      });
+      button.classList.add('active');
+      button.setAttribute('aria-current', 'page');
+    });
+  });
+
+  // Highlight nav button on scroll
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + window.innerHeight / 3;
+    buttons.forEach(button => {
+      const section = document.getElementById(button.getAttribute('data-target'));
+      if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+        buttons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.removeAttribute('aria-current');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-current', 'page');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
